@@ -16,6 +16,8 @@ var findKthLargest = function (nums, k) {
     //1.
     //sort the array first
     //output the kth largest number
+    nums = sort(nums);
+    return nums[nums.length-k];
 
 
     //2.
@@ -23,31 +25,37 @@ var findKthLargest = function (nums, k) {
     //One warning is that Kth Largest not the Kth unique. So need one more array to calculate-
     //->for the same value in the array.
     //Complexity is n^2
-    let temp;
-    let rank = 0;
-    let rankOfNums = [];
-    let calculateSame = [];
-    let tempSame;
-    const length = nums.length;
-    for (let i = 0; i < length; i++) {
-        temp = 1;
-        tempSame = 0;
-        for (let j = 0; j < length; j++) {
-            if (i != j && nums[i] < nums[j]) {
-                temp++;
-            }
-            if (i != j && nums[i] === nums[j]) {
-                tempSame++;
-            }
-        }
-        //rankOfNums[i]=temp;
-        calculateSame.push(tempSame);
-        rankOfNums.push(temp);
-    }
-    for (let m = 0; m < length; m++) {
-        if (rankOfNums[m] === k || (k > rankOfNums[m] && k <= rankOfNums[m] + calculateSame[m])) {
-            rank = m;
-        }
-    }
-    return nums[rank]
+    // let temp;
+    // let rank = 0;
+    // let rankOfNums = [];
+    // let calculateSame = [];
+    // let tempSame;
+    // const length = nums.length;
+    // for (let i = 0; i < length; i++) {
+    //     temp = 1;
+    //     tempSame = 0;
+    //     for (let j = 0; j < length; j++) {
+    //         if (i != j && nums[i] < nums[j]) {
+    //             temp++;
+    //         }
+    //         if (i != j && nums[i] === nums[j]) {
+    //             tempSame++;
+    //         }
+    //     }
+    //     //rankOfNums[i]=temp;
+    //     calculateSame.push(tempSame);
+    //     rankOfNums.push(temp);
+    // }
+    // for (let m = 0; m < length; m++) {
+    //     if (rankOfNums[m] === k || (k > rankOfNums[m] && k <= rankOfNums[m] + calculateSame[m])) {
+    //         rank = m;
+    //     }
+    // }
+    // return nums[rank]
 };
+
+//Sort the array
+function sort(arr) {
+    
+    return arr;
+}
