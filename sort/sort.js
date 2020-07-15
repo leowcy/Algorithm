@@ -1,6 +1,6 @@
 // Put All the existing sort algorithm here
 
-let array = [2,4,55,5,6,2,123,5,23541,-1,0,555,6,88,-3];
+let array = [2,4,55,5,6,2,123,5,23541,-1,0,555,6,88,-3,-5];
 
 //1. Bubble Sort
 // Swap the neighbor element only - slowest. Put the largest element to the end of the array
@@ -27,9 +27,9 @@ function bubbleSort(arr) {
 function selectSort(arr) {
     const len = arr.length - 1;
     let min;
-    for (let i = 0; i<len; i++) {
+    for (let i = 0; i<= len; i++) {
         min = arr[i];
-        for(let j = i+1; j < len; j++) {
+        for(let j = i+1; j <= len; j++) {
             if (arr[j] < min) {
                 min = arr[j];
                 arr[j] = arr[i];
@@ -41,4 +41,4 @@ function selectSort(arr) {
     return arr;
 }
 
-selectSort(array);
+//selectSort(array);
