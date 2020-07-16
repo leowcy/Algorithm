@@ -16,11 +16,11 @@ function bubbleSort(arr) {
             }
         }
     }
-    console.log("sorted array: ", arr);
+    console.log("Bubble sort: ", arr);
     return arr;
 }
 
-//bubbleSort(array);
+bubbleSort(array);
 
 //2. Select sort
 // Select the smallest/largest number and put it to the first/end of the array
@@ -37,11 +37,11 @@ function selectSort(arr) {
             }
         }
     }
-    console.log("sorted array: ", arr);
+    console.log("Select sort: ", arr);
     return arr;
 }
 
-//selectSort(array);
+selectSort(array);
 
 //3. Insert sort
 /**
@@ -55,7 +55,7 @@ function insertSort(arr) {
     for(let i = 1; i < len; i++) {
         arrToSort = insert(arrToSort, arr[i]);
     }
-    console.log("arrToSort: ", arrToSort);
+    console.log("Insert Sort: ", arrToSort);
     return arrToSort;
 }
 
@@ -67,7 +67,7 @@ const insert = (insertArr, insertValue) => {
         } else if (j == insertArr.length - 1 && insertArr[j] <= insertValue) {
             insertArr.push(insertValue);
             break;
-        } else if (j != 0 && j != insertArr.length-1 && insertArr[j] <= insertValue && insertArr[j+1] >= insertValue) {
+        } else if (j != 0 && j != insertArr.length-1 && insertArr[j] < insertValue && insertArr[j+1] > insertValue) {
             insertArr.splice(j, 0, insertValue);
             break;
         }
