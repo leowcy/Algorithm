@@ -62,12 +62,17 @@ function insertSort(arr) {
 const insert = (insertArr, insertValue) => {
     for(let j = 0; j < insertArr.length; j++) {
         if (j == 0 && insertArr[j] >= insertValue) {
+            //unshift will insert the element to the first index of the array and extend the array
             insertArr.unshift(insertValue);
             break;
         } else if (j == insertArr.length - 1 && insertArr[j] <= insertValue) {
+            //push will insert the element to the last index of the array and extend the array
             insertArr.push(insertValue);
             break;
         } else if (j != 0 && j != insertArr.length-1 && insertArr[j] < insertValue && insertArr[j+1] > insertValue) {
+            //insert the element to the index of J of the array
+            // splice(a, b, c) -> a is the index position. b is the 0/1. 0 means insert at the position. 1 means substitute the value.
+            // c is the value to substitute or insert.
             insertArr.splice(j, 0, insertValue);
             break;
         }
