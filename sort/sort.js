@@ -1,6 +1,8 @@
 // Put All the existing sort algorithm here
 
 let array = [2,4,55,5,6,2,123,5,23541,-1,0,555,6,88,-3,-5, 100024];
+let array1 = [1,1,3,3,2,2,2];
+let array2 = [3,1,1,3];
 
 //1. Bubble Sort
 // Swap the neighbor element only - slowest. Put the largest element to the end of the array
@@ -20,7 +22,7 @@ function bubbleSort(arr) {
     return arr;
 }
 
-bubbleSort(array);
+//bubbleSort(array);
 
 //2. Select sort
 // Select the smallest/largest number and put it to the first/end of the array
@@ -41,7 +43,7 @@ function selectSort(arr) {
     return arr;
 }
 
-selectSort(array);
+//selectSort(array1);
 
 //3. Insert sort
 /**
@@ -69,15 +71,15 @@ const insert = (insertArr, insertValue) => {
             //push will insert the element to the last index of the array and extend the array
             insertArr.push(insertValue);
             break;
-        } else if (j != 0 && j != insertArr.length-1 && insertArr[j] < insertValue && insertArr[j+1] > insertValue) {
+        } else if (j != 0 && j != insertArr.length-1 && insertArr[j] <= insertValue && insertArr[j+1] >= insertValue) {
             //insert the element to the index of J of the array
             // splice(a, b, c) -> a is the index position. b is the 0/1. 0 means insert at the position. 1 means substitute the value.
             // c is the value to substitute or insert.
-            insertArr.splice(j, 0, insertValue);
+            insertArr.splice(j+1, 0, insertValue);
             break;
         }
     }
     return insertArr;
 }
 
-insertSort(array);
+insertSort(array2);
