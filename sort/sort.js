@@ -98,4 +98,29 @@ const insert = (insertArr, insertValue) => {
 //     return arr;
 // }
 
-insertSort(array2);
+//insertSort(array2);
+
+//4. Shell sort
+/**
+ * 希尔排序的基本思想是：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录"基本有序"时，再对全体记录进行依次直接插入排序。
+ */
+const shellSort = (arr) => {
+    var len = arr.length,
+        temp,
+        gap = 1;
+    while(gap < len/3) {          //动态定义间隔序列
+        gap =gap*3+1;
+    }
+    for (gap; gap > 0; gap = Math.floor(gap/3)) {
+        for (var i = gap; i < len; i++) {
+            temp = arr[i];
+            for (var j = i-gap; j >= 0 && arr[j] > temp; j-=gap) {
+                arr[j+gap] = arr[j];
+            }
+            arr[j+gap] = temp;
+        }
+    }
+    return arr;
+}
+
+shellSort(array2)
