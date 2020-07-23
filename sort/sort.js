@@ -1,20 +1,20 @@
 // Put All the existing sort algorithm here
 
-let array = [2,4,55,5,6,2,123,5,23541,-1,0,555,6,88,-3,-5, 100024];
-let array1 = [1,1,3,3,2,2,2];
-let array2 = [3,1,1,3];
+let array = [2, 4, 55, 5, 6, 2, 123, 5, 23541, -1, 0, 555, 6, 88, -3, -5, 100024];
+let array1 = [1, 1, 3, 3, 2, 2, 2];
+let array2 = [3, 1, 1, 3];
 
 //1. Bubble Sort
 // Swap the neighbor element only - slowest. Put the largest element to the end of the array
 // O(n) = n^2
 function bubbleSort(arr) {
-    const len = arr.length-1;
-    for (let i = 0; i<len; i++) {
-        for(let j = 0; j < len - i; j++) {
-            if (arr[j] > arr[j+1]) {
+    const len = arr.length - 1;
+    for (let i = 0; i < len; i++) {
+        for (let j = 0; j < len - i; j++) {
+            if (arr[j] > arr[j + 1]) {
                 var temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
@@ -29,9 +29,9 @@ function bubbleSort(arr) {
 function selectSort(arr) {
     const len = arr.length - 1;
     let min;
-    for (let i = 0; i<= len; i++) {
+    for (let i = 0; i <= len; i++) {
         min = arr[i];
-        for(let j = i+1; j <= len; j++) {
+        for (let j = i + 1; j <= len; j++) {
             if (arr[j] < min) {
                 min = arr[j];
                 arr[j] = arr[i];
@@ -54,7 +54,7 @@ function selectSort(arr) {
 function insertSort(arr) {
     const len = arr.length;
     let arrToSort = [arr[0]];
-    for(let i = 1; i < len; i++) {
+    for (let i = 1; i < len; i++) {
         arrToSort = insert(arrToSort, arr[i]);
     }
     console.log("Insert Sort: ", arrToSort);
@@ -62,7 +62,7 @@ function insertSort(arr) {
 }
 
 const insert = (insertArr, insertValue) => {
-    for(let j = 0; j < insertArr.length; j++) {
+    for (let j = 0; j < insertArr.length; j++) {
         if (j == 0 && insertArr[j] >= insertValue) {
             //unshift will insert the element to the first index of the array and extend the array
             insertArr.unshift(insertValue);
@@ -71,11 +71,11 @@ const insert = (insertArr, insertValue) => {
             //push will insert the element to the last index of the array and extend the array
             insertArr.push(insertValue);
             break;
-        } else if (j != 0 && j != insertArr.length-1 && insertArr[j] <= insertValue && insertArr[j+1] >= insertValue) {
+        } else if (j != 0 && j != insertArr.length - 1 && insertArr[j] <= insertValue && insertArr[j + 1] >= insertValue) {
             //insert the element to the index of J of the array
             // splice(a, b, c) -> a is the index position. b is the 0/1. 0 means insert at the position. 1 means substitute the value.
             // c is the value to substitute or insert.
-            insertArr.splice(j+1, 0, insertValue);
+            insertArr.splice(j + 1, 0, insertValue);
             break;
         }
     }
@@ -108,19 +108,65 @@ const shellSort = (arr) => {
     var len = arr.length,
         temp,
         gap = 1;
-    while(gap < len/3) {          //动态定义间隔序列
-        gap =gap*3+1;
+    while (gap < len / 3) {          //动态定义间隔序列
+        gap = gap * 3 + 1;
     }
-    for (gap; gap > 0; gap = Math.floor(gap/3)) {
+    for (gap; gap > 0; gap = Math.floor(gap / 3)) {
         for (var i = gap; i < len; i++) {
             temp = arr[i];
-            for (var j = i-gap; j >= 0 && arr[j] > temp; j-=gap) {
-                arr[j+gap] = arr[j];
+            for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) {
+                arr[j + gap] = arr[j];
             }
-            arr[j+gap] = temp;
+            arr[j + gap] = temp;
         }
     }
     return arr;
 }
 
-shellSort(array2)
+//shellSort(array2)
+
+//5. Merge Sort
+
+/**
+ * 归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。
+作为一种典型的分而治之思想的算法应用，归并排序的实现由两种方法：
+自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第 2 种方法）；
+自下而上的迭代；
+ */
+
+function mergeSort (arr) {
+    const len = arr.length;
+    if (len < 2) {
+        return arr;
+    }
+    //犯了一个错误。开始用了splice来对数组进行切割，但是splice的作用是删除数组中某个位置的元素。只有slice方法才是对数组的分割。
+    var mid = Math.floor(len/2),
+        left = arr.slice(0, mid),
+        right = arr.slice(mid);
+
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(arr1, arr2) {
+    var result = [];
+
+    while(arr1.length && arr2.length) {
+        if (arr1[0] <= arr2[0]) {
+            result.push(arr1.shift());
+        } else {
+            result.push(arr2.shift());
+        }
+    }
+
+    while (arr1.length) {
+        result.push(arr1.shift());
+    }
+
+    while (arr2.length) {
+        result.push(arr2.shift());
+    }
+
+    return result;
+}
+
+//console.log("mergeSort: ",mergeSort(array));
