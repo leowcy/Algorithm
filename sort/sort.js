@@ -136,13 +136,13 @@ const shellSort = (arr) => {
 O(nlogn) 的时间复杂度。代价是需要额外的内存空间。
  */
 
-function mergeSort (arr) {
+function mergeSort(arr) {
     const len = arr.length;
     if (len < 2) {
         return arr;
     }
     //犯了一个错误。开始用了splice来对数组进行切割，但是splice的作用是删除数组中某个位置的元素。只有slice方法才是对数组的分割。
-    var mid = Math.floor(len/2),
+    var mid = Math.floor(len / 2),
         left = arr.slice(0, mid),
         right = arr.slice(mid);
 
@@ -152,7 +152,7 @@ function mergeSort (arr) {
 function merge(arr1, arr2) {
     var result = [];
 
-    while(arr1.length && arr2.length) {
+    while (arr1.length && arr2.length) {
         if (arr1[0] <= arr2[0]) {
             result.push(arr1.shift());
         } else {
@@ -172,3 +172,35 @@ function merge(arr1, arr2) {
 }
 
 //console.log("mergeSort: ",mergeSort(array));
+
+//6. Quick Sort
+
+/**
+ * 快速排序的最坏运行情况是 O(n²)，比如说顺序数列的快排。但它的平摊期望时间是 O(nlogn)，且 O(nlogn) 记号中隐含的常数因子很小，
+ * 比复杂度稳定等于 O(nlogn) 的归并排序要小很多。所以，对绝大多数顺序性较弱的随机数列而言，快速排序总是优于归并排序。
+ */
+
+function quickSort(origArray) {
+	if (origArray.length <= 1) { 
+		return origArray;
+	} else {
+
+		var left = [];
+		var right = [];
+		var newArray = [];
+		var pivot = origArray.pop();
+		var length = origArray.length;
+
+		for (var i = 0; i < length; i++) {
+			if (origArray[i] <= pivot) {
+				left.push(origArray[i]);
+			} else {
+				right.push(origArray[i]);
+			}
+		}
+
+		return newArray.concat(quickSort(left), pivot, quickSort(right));
+	}
+}
+
+//console.log("quickSort: ", quickSort(array2))
