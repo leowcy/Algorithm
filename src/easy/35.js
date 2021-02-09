@@ -11,7 +11,7 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target) {
+var searchInsert = function (nums, target) {
     const lengthOfNums = nums.length;
     if (!nums || lengthOfNums === 0) {
         return 0;
