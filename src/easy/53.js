@@ -26,3 +26,13 @@ var maxSubArray = function(nums) {
     }
     return max;
 };
+
+/**
+ * So I change the format of the sub problem into something like: maxSubArray(int A[], int i), 
+ * which means the maxSubArray for A[0:i ] which must has A[i] as the end element. 
+ * Note that now the sub problem's format is less flexible and less powerful than the previous one because 
+ * there's a limitation that A[i] should be contained in that sequence and we have to keep track of 
+ * each solution of the sub problem to update the global optimal value. 
+ * However, now the connect between the sub problem & the original one becomes clearer:
+ * maxSubArray(A, i) = maxSubArray(A, i - 1) > 0 ? maxSubArray(A, i - 1) : 0 + A[i]; 
+ */
