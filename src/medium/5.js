@@ -19,27 +19,35 @@ var longestPalindrome = function (s) {
     // construct a 2D array
     const dp = [...new Array(s.length + 1)].map(_ => new Array(s.length + 1).fill(false));
 
+
+
     let lps = '';
 
-    // base case for one character
+    // fill data into the  2d array
+
+    // for length === 1 substring
     for (let i = 0; i < s.length; i++) {
         dp[i][i] = true;
-        lps = s[i];
+        lps = s[0];
     }
 
-    // base case for two characters
+    // for length === 2 substring
     for (let i = 0; i < s.length; i++) {
-        if (s[i] === s[i + 1]) dp[i][i + 1] = true;
-        if (dp[i][i + 1]) lps = s.substring(i, i + 2);
+        if (s[i] === s[i + 1]) {
+            dp[i][i + 1] = true;
+            lps = s.slice(i, i + 2);
+        }
     }
 
-    // expand to three or more characters
-    for (let i = s.length - 1; i >= 0; i--) {
-        for (let j = i + 2; j < s.length; j++) {
-            dp[i][j] = dp[i + 1][j - 1] && s[i] === s[j];
-            if (dp[i][j]) lps = lps.length < (j - i + 1) ? s.substring(i, j + 1) : lps;
+    // for length > 2
+    for (let i = s.length-1; i >= 0; i--) {
+        for (let j = i + 2; j < s.length + 1; j++) {
+            dp[i][j] = s[i] === s[j] && dp[i + 1][j - 1];
+            if (dp[i][j]) lps = lps.length > (j - i + 1) ? lps : s.slice(i, j + 1);
         }
     }
 
     return lps;
 }
+
+longestPalindrome("aaaaa")
