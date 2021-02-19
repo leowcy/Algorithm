@@ -8,8 +8,7 @@ var threeSum = function (nums) {
     let res = [];
     // sort it first - O(NlogN) sort operation
     const sortedNums = nums.sort((a, b) => a - b);
-    let previous = null,
-        stringOfArr = [];
+    let previous = null;
 
     for (let i = 0; i < sortedNums.length - 2; i++) {
         if (sortedNums[i] > 0) {
@@ -42,9 +41,11 @@ var threeSum = function (nums) {
                         j++;
                 }
             }
-            // do nothing is the next number is the same as previous one
+            // do nothing if the next number is the same as previous one
         }
     }
 
     return res;
 };
+
+// O(n^2)
