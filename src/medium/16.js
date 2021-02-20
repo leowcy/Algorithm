@@ -15,7 +15,7 @@ var threeSumClosest = function (nums, target) {
 
     //Complexity is O(nlogn)
     const sortedNums = nums.sort((a, b) => a - b);
-    let map = {};
+    let res;
     let flag = false;
     let diff;
 
@@ -28,7 +28,8 @@ var threeSumClosest = function (nums, target) {
             let tempDiff = Math.abs(target - temp);
             if (!diff || tempDiff < diff) {
                 diff = tempDiff;
-                map[temp] = tempDiff;
+                //map[temp] = tempDiff;
+                res = temp;
             }
             if (temp === target) {
                 sum = temp;
@@ -41,11 +42,11 @@ var threeSumClosest = function (nums, target) {
         }
     }
     if (flag) return sum;
-    else {
+    else return res;
         // find the most close and return the sum value
-        var [lowestItems] = Object.entries(map).sort(([,v1], [,v2]) => v1 - v2)
-        return parseInt(lowestItems, 10);
-    }
+        // var [lowestItems] = Object.entries(map).sort(([,v1], [,v2]) => v1 - v2)
+        // return parseInt(lowestItems, 10);
+        
 };
 
 /**
