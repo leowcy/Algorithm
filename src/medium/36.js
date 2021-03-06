@@ -13,6 +13,9 @@ Only the filled cells need to be validated according to the mentioned rules.
 * @param {character[][]} board
 * @return {boolean}
 */
+
+// Use Set() -> set.has / set.add 
+// Key is the check the box -> boxIndex = (3 * Math.floor(i / 3) + Math.floor(j / 3));
 var isValidSudoku = function (board) {
     if (!board) return false;
     let row, column, box = [];
