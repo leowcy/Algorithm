@@ -29,28 +29,30 @@ var permute = function (nums) {
 
     let res = [];
     let used = [];
+    // extra the unique value of array
+    let set1 = new Set(nums);
     nums.forEach(num => used[num] ? used[num]++ : used[num] = 1);
-    dfs(nums, [], used, res);
+    dfs(nums, [], used, res, set1);
     console.log("res: ", res);
     return res;
 };
 
-var dfs = function (nums, temp, used, res) {
+var dfs = function (nums, temp, used, res, set1) {
     if (temp.length == nums.length) {
         // deep clone to avoid temp array usage
         res.push(Array.from(temp));
         return;
     }
-    for (let i = 0; i < nums.length; i++) {
-        if (used[nums[i]]) {
+    for (let eachNumber of set1) {
+        if (used[eachNumber]) {
             // if never use before
-            temp.push(nums[i]);
-            used[nums[i]]--;
+            temp.push(eachNumber);
+            used[eachNumber]--;
             // recursively call
-            dfs(nums, temp, used, res)
+            dfs(nums, temp, used, res, set1)
             // pop
             temp.pop();
-            used[nums[i]]++;
+            used[eachNumber]++;
         }
     }
 }
@@ -66,6 +68,7 @@ var permuteUnique = function (nums) {
             res.push(cur.slice());
             return;
         }
+        // for loop the set here instead of the whole nums array -> then no duplicate number will be access
         for (let num of set) {
             if (remain[num]) {
                 cur.push(num);
