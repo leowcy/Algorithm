@@ -7,3 +7,5 @@
 
 ## Solution 1:
 - use the string.replace() function in nodeJS and use the Regex of `/g` to replace all the match character
+- Time Complexity: O(n) = n (length of string)
+- Space Complexity: O(1)
