@@ -5,9 +5,12 @@
 - Most importantly -> chose a better starting index -> let's say it starts at the top right corner (it could also be bottom left)
 - if smaller -> column -- ; else -> row++
 - Then recursively call the function
-- Complexity: N = max(row, column) -> O(n) = N;
+- Time complexity:  N = max(row, column) -> O(n) = N;
+- Space complexity: O(1) -> Reason: using the existing array -> No extra space needed
 
 ## solution 2 - Binary search
 - Calculate the mid of row and column and compare it with the target value
 - if smaller -> move left or up
 - if bigger -> move right or down
+- Time complexity: O(n) = log(row) * log(column)
+- Space complexity: O(1) -> Reason: using the existing array -> No extra space needed

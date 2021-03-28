@@ -13,3 +13,5 @@
 ## solution 2:
 - use the current array to do the swap. Put the element/number in the nums array to its original index ( `nums[index] == index` )
 - After that -> when swapping but realize that the number has already in the right position -> Mean duplication -> return the index
+- Time complexity: O(n)
+- Space complexity: O(1) -> Reason: using the existing array -> No extra space needed
