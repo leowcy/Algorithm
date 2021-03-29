@@ -17,3 +17,9 @@
 ## solution:
 - First we will need to be clear on the Queue and Stack property. Queue: Fist in First out (FIFO) / Stack: Last in First out (LIFO)
 - Use two stack to accomplish/build a queue
+- For stack A -> simply push the element into it when doing the appendTail operation
+- For stack B -> we will use it as the deleteHead operation. The logic is -> if B is not null -> Which means there is still some former head value inside ->
+    simply pop it which will be qualified for the deleteHead. -> if B is null -> Check the stack A is null or not. If stack A is also null, it means that no
+    element inside the array, so return -1 -> If stack A is not null -> pop element in stack A and push them to stack B. Return stackB.pop() value.
+- Time Complexity: O(n) = O(1) 对于插入和删除操作，时间复杂度均为 O(1)。插入不多说，对于删除操作，虽然看起来是 O(n) 的时间复杂度，但是仔细考虑下每个元素只会「至多被插入和弹出 stack2 一次」，因此均摊下来每个元素被删除的时间复杂度仍为 O(1)。
+- Space Complexity: O(n) = n -> Two stack for element which is O(2n) = O(n)
