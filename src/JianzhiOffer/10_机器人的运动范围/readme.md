@@ -23,5 +23,6 @@
   3. 限制条件（不能越界 + 位数和大于K + 该格子未被检索过）
   4. 统计格子数（可以设定一个blockNumber， 更巧妙的是在3中，检索格子使用情况的时候会设置一个set，最终set的长度即为格子数）
 - 评论区看到一个条有意思的评论：BFS：一般借助队列进行存储 DFS：一般借助递归进行计算
+- 广度优先搜索算法（Breadth-First-Search，缩写为 BFS），是一种利用队列实现的搜索算法。简单来说，其搜索过程和 “湖面丢进一块石头激起层层涟漪” 类似。深度优先搜索算法（Depth-First-Search，缩写为 DFS），是一种利用递归实现的搜索算法。简单来说，其搜索过程和 “不撞南墙不回头” 类似。BFS 的重点在于队列，而 DFS 的重点在于递归。这是它们的本质区别。
 - Time Complexity: O(n) = mn (row and column) -> The same block could be visit multiple times but it will only be a constant value. So c*mn = mn
 - Space Complexity: O(n) = mn -> there is a set to check if the block has been verified or not -> the set will be m*n space

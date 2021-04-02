@@ -17,9 +17,9 @@
         // set checked block as used
         blockSet.add(rowColumnString);
         dfs(row + 1, column);
-        dfs(row - 1, column);
+        //dfs(row - 1, column);
         dfs(row, column + 1);
-        dfs(row, column - 1);
+        //dfs(row, column - 1);
     }
 
     dfs(0, 0);
