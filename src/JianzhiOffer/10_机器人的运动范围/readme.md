@@ -16,11 +16,12 @@
 
 ## solution 1:
 
-- Similar to question No.9 -> Move up/down/left/right -> so easily think of using DFS/BFS. -> 此题为广度优先
+- Similar to question No.9 -> Move up/down/left/right -> so easily think of using DFS/BFS. -> 此题做法为DFS
 - 几个关键点：
   1. 位数和的计算 （写了两种方法在 main.js 中）
   2. 四周方向遍历（dfs() row +- 1 / column +- 1)
   3. 限制条件（不能越界 + 位数和大于K + 该格子未被检索过）
   4. 统计格子数（可以设定一个blockNumber， 更巧妙的是在3中，检索格子使用情况的时候会设置一个set，最终set的长度即为格子数）
+- 评论区看到一个条有意思的评论：BFS：一般借助队列进行存储 DFS：一般借助递归进行计算
 - Time Complexity: O(n) = mn (row and column) -> The same block could be visit multiple times but it will only be a constant value. So c*mn = mn
 - Space Complexity: O(n) = mn -> there is a set to check if the block has been verified or not -> the set will be m*n space
