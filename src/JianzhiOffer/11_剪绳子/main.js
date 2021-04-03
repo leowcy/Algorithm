@@ -39,3 +39,38 @@ var calculate = (lengthOfRope, numberOfSection) => {
     if (b === 1) return Math.pow(3, a - 1) * 4;
     return Math.pow(3, a) * 2;
 };
+
+// solution 3: (DP)
+/**
+ * @param {number} n - 2 <= n <= 1000
+ * @return {number}
+ */
+ var cuttingRope = function (n) {
+    const ropeLength = n;
+
+    if (ropeLength <= 3) return ropeLength - 1;
+
+    // product[2] = 2 -> reason is that for a subRope of length two, its maximum product value will be itself. So product[2] = 2 > 1*1. Same as product[3] = 3
+    let product = [];
+    product[1] = 1;
+    product[2] = 2;
+    product[3] = 3;
+
+    // i here represents the length of the rope
+    for (let i = 4; i <= ropeLength; i++) {
+        let max = 0;
+        /**
+         * j here represents the length of the 'first' cut half of the rope
+         * 巧妙在于只用考虑切一刀的情况，第一刀分成1/2/3/4... 然后计算乘积，然后对比第一刀分为几的结果会最大。
+         * 原因是我们已经保存了每一步的最优解，因为只用考虑切一刀的情况，就能知道最优解的答案是多少，然后简单比对即可。
+         */
+
+        for (let j = 1; j <= Math.floor(i / 2); j++) {
+            let tempProduct = product[j] * product[i - j];
+            max = Math.max(max, tempProduct);
+            product[i] = max;
+        }
+    }
+
+    return product[n];
+};
