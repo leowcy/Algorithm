@@ -1,0 +1,23 @@
+### 删除链表的节点
+
+给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。
+
+返回删除后的链表的头节点。
+
+注意：此题对比原题有改动
+
+示例 1:
+输入: head = [4,5,1,9], val = 5
+输出: [4,1,9]
+解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -> 1 -> 9.
+
+示例 2:
+输入: head = [4,5,1,9], val = 1
+输出: [4,5,9]
+解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -> 5 -> 9.
+
+## solution:
+- Define a new ListNode to point to the head Node. In that case, we won't need to worry about removing the head node.
+- Then it is simple. For loop the listNode -> if found the node, make the previous point to the next list node.
+- Time Complexity: O(n) = N -> For loop N once.
+- Space Complexity: O(n) = 1
