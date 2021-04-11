@@ -11,3 +11,11 @@
 - if l1 || l2 is null -> return the not null one
 - Time Complexity: O(n) = m+n -> m is l1.length n is l2.length
 - Space Complexity: O(n) = 1
+
+## solution 2: Loop
+- Create a for loop checking l1 and l2 is null or not -> if (l1 && !l2) || l1.val < l2.val -> make the preNode point to l1 -> make the l1 to l1.next
+- Same logic for the else condition -> After this check, make preNode to preNode.next
+- Keep another head node to stay at the front to return the list node
+- return head.next at the end
+- TC: O(n) = m+n
+- SC: O(n) = 1
