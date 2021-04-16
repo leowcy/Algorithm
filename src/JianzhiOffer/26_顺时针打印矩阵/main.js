@@ -46,5 +46,36 @@ var getResByPriorityOrder = (matrix, indexOfRow, row, indexOfColumn, column, res
         }
     }
     return res;
+}
 
+// solution 2:
+var spiralOrder = function (matrix) {
+    if (!matrix.length || !matrix[0].length) return [];
+
+    const row = matrix.length, column = matrix[0].length;
+    const size = row * column;
+
+    // create a new array to keep records of the visited node - create 2D array
+    const visited = new Array(row).fill(0).map(() => new Array(column).fill(false));
+    // create a output array of length of size which is the total possible nodes in the array
+    const output = new Array(size).fill(0);
+
+    let directionIndex = 0, rowIndex = 0, columnIndex = 0;
+    // predefine a directions array point to right->down->left->up
+    const directions = [
+        [0, 1], [1, 0], [0, -1], [-1, 0]
+    ];
+
+    for(let i = 0; i < size; i++) {
+        output[i] = matrix[rowIndex][columnIndex];
+        visited[rowIndex][columnIndex] = true;
+        const nextRow = rowIndex + directions[directionIndex][0], nextColumn = columnIndex + directions[directionIndex][1];
+        if (!(0 <= nextRow && nextRow < row && 0 <= nextColumn && nextColumn < column && !(visited[nextRow][nextColumn]))) {
+            directionIndex = (directionIndex + 1) % 4;
+        }
+        rowIndex += directions[directionIndex][0];
+        columnIndex += directions[directionIndex][1];
+    }
+
+    return output;
 }

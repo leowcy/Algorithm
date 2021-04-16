@@ -32,3 +32,10 @@
 
 - Time Complexity: O(n) = m*n -> size of the 2d array
 - Space Complexity: O(n) = 1 -> no extra space needed. The return res array doesn't count.
+
+## solution 2:
+- 先把size计算出来，然后for loop size直到填满。
+- 定义四个方向，右-下-左-上。每次当触碰到边界或者遇到访问过的数组，顺时针转向。这里巧妙的是顺时针转向用的是 +1 然后对4取余，得出下一个方向的改变值。
+- 边界条件定义好 - 溢出、index<0、碰到访问过的数组，都需要变相即可。
+- TC： O(n) = m*n = size -> 遍历所有node。
+- SC： O(n) = m*n -> 建立了一个这样的map来存储访问过的节点。
