@@ -25,3 +25,18 @@ var buildTree = function (preorder, inorder) {
 
     return root;
 };
+
+// 重温 8-28
+var buildTree = function (preorder, inorder) {
+    if (!preorder.length) return null;
+
+    let newTree = new TreeNode();
+    newTree.val = preorder[0];
+
+    const rootIndex = inorder.findIndex(newTree.val);
+
+    newTree.left = buildTree(preorder.slice(1, 1 + rootIndex), inorder.slice(0, rootIndex));
+    newTree.right = buildTree(preorder.slice(rootIndex + 1), inorder.slice(rootIndex + 1))
+
+    return newTree;
+};
