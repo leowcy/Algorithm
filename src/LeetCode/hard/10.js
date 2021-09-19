@@ -32,8 +32,8 @@ var isMatch = function (s, p) {
 
     var check = function (indexOfS, indexOfP) {
         if (indexOfS === lengthOfS && indexOfP === lengthOfP) return true;
-        if (indexOfS > lengthOfS) return false;
-        if (map[indexOfS + ":" + indexOfP] !== undefined) return map[indexOfS + ":" + indexOfP];
+        if (indexOfS > lengthOfP) return false;
+        if (map[indexOfS + ":" + indexOfP] !== undefined) return map[indexOfS + ":" + indexOfP]; // dp memorization
 
         if (s[indexOfS] === p[indexOfP] || p[indexOfP] === ".") {
             map[indexOfS + ":" + indexOfP] = p[indexOfP + 1] === "*" ? check(indexOfS + 1, indexOfP) || check(indexOfS, indexOfP + 2) : check(indexOfS + 1, indexOfP + 1);
