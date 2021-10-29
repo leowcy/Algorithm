@@ -33,7 +33,7 @@ var buildTree = function (preorder, inorder) {
     let newTree = new TreeNode();
     newTree.val = preorder[0];
 
-    const rootIndex = inorder.findIndex(newTree.val);
+    const rootIndex = inorder.findIndex(ele => ele == newTree.val);
 
     newTree.left = buildTree(preorder.slice(1, 1 + rootIndex), inorder.slice(0, rootIndex));
     newTree.right = buildTree(preorder.slice(rootIndex + 1), inorder.slice(rootIndex + 1))
