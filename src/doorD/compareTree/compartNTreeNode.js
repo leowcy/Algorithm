@@ -13,6 +13,7 @@ root1.children[0].children.push(new TreeNode(4, 'D'));               �
 root1.children[0].children.push(new TreeNode(5, 'E'));
 root1.children[0].children.push(new TreeNode(6, 'F'));
 root1.children[1].children.push(new TreeNode(7, 'G'));
+root1.children[1].children.push(new TreeNode(8, 'H'));
 
 const root2 = new TreeNode(1, 'A');
 root2.children.push(new TreeNode(2, 'B'))
@@ -21,6 +22,7 @@ root2.children[0].children.push(new TreeNode(5, 'E'))
 root2.children[0].children.push(new TreeNode(4, 'D'))
 root2.children[0].children.push(new TreeNode(22, 'F'))
 root2.children[1].children.push(new TreeNode(7, 'G'))
+root2.children[1].children.push(new TreeNode(8, 'I'));
 
 console.log(root1)
 console.log(root2)
