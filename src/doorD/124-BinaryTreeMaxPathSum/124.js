@@ -10,6 +10,15 @@
  * @param {TreeNode} root
  * @return {number}
  */
+
+ class TreeNode {
+    constructor(val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+        this.mask = false;
+    }
+}
 var maxPathSum = function (root) {
     if (!root) return 0;
 
@@ -30,3 +39,14 @@ var maxPathSum = function (root) {
     findMaxPath(root);
     return maxPathSum;
 };
+
+let root = new TreeNode(-10);
+root.left = new TreeNode(9);
+root.left.mask = true;
+root.right = new TreeNode(20);
+root.right.left = new TreeNode(15);
+root.right.left.mask = true;
+root.right.right = new TreeNode(7);
+root.right.right.mask = true;
+
+console.log(maxPathSum(root));
