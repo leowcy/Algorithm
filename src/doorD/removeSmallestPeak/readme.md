@@ -1,0 +1,2 @@
+- https://binarysearch.com/problems/Remove-Smallest-Peaks-in-Order
+- LC1671: https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/
