@@ -18,6 +18,7 @@ var maxPathSum2 = function (root) {
     var findMaxPathSum2 = function (root) {
         if (!root) return null;
 
+        // post order traversal
         let left = findMaxPathSum2(root.left);
         let right = findMaxPathSum2(root.right);
         // abandon the inActive leaf node
