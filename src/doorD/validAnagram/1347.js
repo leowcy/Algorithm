@@ -16,7 +16,7 @@ let findKAnagrams = function (name, list, K) {
 
     for (const eachWord of list) {
         if (eachWord.length == input.length) {
-            if (isValidAnagram(input, eachWord, K)) {
+            if (isValid(input, eachWord, K)) {
                 answer.push(eachWord);
             }
         }
@@ -52,8 +52,31 @@ var isValidAnagram = function (w1, w2, k) {
     }
 }
 
-let input = "anagram"
-let list = ["grammar", "grammer", "anagram"]
+let isValid = function (m, n, k) {
+    if (m.length != n.length) return false;
+
+    let count = 0;
+    let alphArr = new Array(26).fill(0);
+
+    for (let i = 0; i < m.length; i++) {
+        let c1 = m.charCodeAt(i) - 97;
+        let c2 = n.charCodeAt(i) - 97;
+
+        alphArr[c1]++;
+        alphArr[c2]--;
+    }
+
+    for (const each of alphArr) {
+        if (each > 0) {
+            count += each;
+        }
+    }
+
+    return count > k ? false : true;
+}
+
+let input = "abc"
+let list = ["abd", "aaaa", "aaa"]
 let K = 2
 console.log(findKAnagrams(input, list, K))
 // print(["grammar", "anagram"])
