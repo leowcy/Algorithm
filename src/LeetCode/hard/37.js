@@ -24,11 +24,14 @@ var solveSudoku = function (board) {
             for (let num = 1; num <= 9; num++) {
                 if (isValid(board, i, j, num.toString())) {
                     board[i][j] = num.toString();
-                    if (solveSudoku(board)) return true;
+                    if (solveSudoku(board)) {
+                        return true;
+                    } else {
+                        // revert it back
+                        board[i][j] = ".";
+                    }
                 }
             }
-            // all failed -> set the value as '.' back and return false;
-            board[i][j] = ".";
             return false;
         }
     }
