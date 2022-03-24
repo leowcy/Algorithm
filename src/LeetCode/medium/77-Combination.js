@@ -27,3 +27,5 @@ var combine = function (n, k) {
 
     return res;
 };
+
+// O(n) = n * 2^n
