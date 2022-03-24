@@ -36,3 +36,9 @@ var subsets = function (nums) {
 
     return res;
 };
+
+/**
+ * Complexity Analysis
+
+Time complexity: O(n) = N * 2^N
+ */
