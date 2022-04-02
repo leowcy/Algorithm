@@ -31,3 +31,5 @@ var helper = function (s, arr, res) {
 }
 
 restoreIpAddresses("25525511135");
+
+// O(3^n) time, O(n) space - it has 3^n subsets
