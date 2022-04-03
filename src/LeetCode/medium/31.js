@@ -13,16 +13,17 @@ Output: [1,3,2]
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
+// 2 3 6 5
 var nextPermutation = function (nums) {
     let flag = false;
     for (let i = nums.length - 1; i > 0; i--) {
         // if found one digit less than the digit next to it(right side)
-        if (nums[i-1] < nums[i]) {
+        if (nums[i - 1] < nums[i]) {
             flag = true;
             // find the larger digit from the right side of the nums array with the less difference
-            const largerDigitIndex = findLarger(nums, i-1);
+            const largerDigitIndex = findLarger(nums, i - 1);
             // swap the i-1 with the first larger digit
-            nums = swap(nums, i-1, largerDigitIndex);
+            nums = swap(nums, i - 1, largerDigitIndex);
             // reverse the nums from i to end of the array
             nums = reverser(nums, i);
             // return nums
@@ -36,7 +37,7 @@ var nextPermutation = function (nums) {
 
 var findLarger = function (nums, index) {
     const value = nums[index];
-    for (let i = nums.length - 1; i > index; i-- ) {
+    for (let i = nums.length - 1; i > index; i--) {
         if (nums[i] - value > 0) return i;
     }
 }
@@ -48,10 +49,47 @@ var swap = function (nums, a, b) {
 
 var reverser = function (nums, i) {
     let j = nums.length - 1;
-    while ( i < j ) {
+    while (i < j) {
         swap(nums, i, j);
         i++;
         j--;
     }
     return nums;
 }
+
+// rewrite 04/03 same solution: swap and reverse the swapped part
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var nextPermutation = function (nums) {
+    let numsLen = nums.length;
+
+    let flag = false;
+
+    for (let i = numsLen - 1; i > 0; i--) {
+        if (nums[i - 1] < nums[i]) {
+            flag = true;
+            // from the end of the list to find the first Larger digit that great than nums[i-1] and swap them
+            for (let j = numsLen - 1; j > i - 1; j--) {
+                if (nums[j] > nums[i - 1]) {
+                    [nums[j], nums[i - 1]] = [nums[i - 1], nums[j]];
+                    break;
+                }
+            }
+            // reverse the part after index i and we will get the expected result
+            let left = i,
+                right = numsLen - 1;
+            while (left < right) {
+                [nums[left], nums[right]] = [nums[right], nums[left]];
+                left++;
+                right--;
+            }
+            break;
+        }
+    }
+
+    if (!flag) {
+        nums.reverse();
+    }
+};
