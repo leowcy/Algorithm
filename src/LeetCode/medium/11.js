@@ -22,7 +22,7 @@ var maxArea = function (height) {
         s = Math.max(s, width * valueOfHeight);
 
         // Key: The higher side -> the bigger possible S will have. So move correspondingly.
-        if(height[left] < height[right])
+        if (height[left] < height[right])
             left++;
         else
             right--;
@@ -30,3 +30,34 @@ var maxArea = function (height) {
 
     return s;
 };
+
+// daily challenge re-complete 11
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var maxArea = function (height) {
+    let l = 0,
+        r = height.length - 1;
+
+    if (l == r) return 0;
+    if (Math.abs(l - r) == 1) return Math.min(height[l], height[r]);
+
+    let maxContain = 0;
+
+    while (l < r) {
+        let tempContain = Math.min(height[l], height[r]) * (r - l);
+
+        maxContain = tempContain > maxContain ? tempContain : maxContain;
+
+        if (height[l] < height[r]) {
+            l++;
+        } else {
+            r--;
+        }
+    }
+
+    return maxContain;
+};
+
+// O(n) = n
