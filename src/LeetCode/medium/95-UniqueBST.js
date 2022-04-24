@@ -39,3 +39,5 @@ var dp = function (n, start, end) {
 
     return res;
 }
+
+// O(n) = N * (2^n) since it has 2*n subsets and it loops for n times
