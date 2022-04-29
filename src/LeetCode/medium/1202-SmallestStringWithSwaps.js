@@ -41,3 +41,5 @@ var smallestStringWithSwaps = function (s, pairs) {
 
     return ans.join('');
 };
+
+smallestStringWithSwaps("dcabfeg",[[0,3],[1,2],[4,3],[5,2]]);
