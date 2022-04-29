@@ -6,14 +6,16 @@ var isBipartite = function (graph) {
     const len = graph.length;
     if (!len) return false;
 
+    // -1 stands for uncolored
     const colors = new Array(len).fill(-1);
 
     for (let node = 0; node < len; node++) {
         if (colors[node] !== -1) {
-            // already colored
+            // already colored - passed to find others
             continue;
         }
 
+        // if not satisfied dfs condition - return false
         if (!dfs(node, graph, colors, 1)) {
             return false;
         }
