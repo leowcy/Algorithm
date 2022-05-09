@@ -25,12 +25,12 @@ var letterCombinations = function (digits) {
 
     if (digits.length === 1) return map[digits[0]];
 
-    let row = [], column= [], newRow = [];
+    let row = [], column = [], newRow = [];
 
-    for (let i = 0; i < digits.length-1; i++) {
+    for (let i = 0; i < digits.length - 1; i++) {
         if (row.length === 0) row = map[digits[i]];
         // set column as the next digit
-        column = map[digits[i+1]];
+        column = map[digits[i + 1]];
         for (let indexOfRow = 0; indexOfRow < row.length; indexOfRow++) {
             for (let indexOfColumn = 0; indexOfColumn < column.length; indexOfColumn++) {
                 newRow.push(row[indexOfRow] + column[indexOfColumn]);
@@ -42,5 +42,48 @@ var letterCombinations = function (digits) {
     console.log(row)
     return row;
 };
+
+// solution 2: DFS
+/**
+ * @param {string} digits
+ * @return {string[]}
+ */
+
+const digitsMap = {
+    "2": ["a", "b", "c"],
+    "3": ["d", "e", "f"],
+    "4": ["g", "h", "i"],
+    "5": ["j", "k", "l"],
+    "6": ["m", "n", "o"],
+    "7": ["p", "q", "r", "s"],
+    "8": ["t", "u", "v"],
+    "9": ["w", "x", "y", "z"]
+};
+
+var letterCombinations = function (digits) {
+    if (!digits || digits.length == 0) return [];
+
+    let res = [];
+
+    dfs(digits, 0, [], res);
+
+    return res;
+};
+
+var dfs = function (digits, index, strArr, res) {
+    if (strArr.length == digits.length) {
+        res.push(strArr.join(""));
+        return;
+    }
+
+    const curDigit = digitsMap[digits[index]];
+    for (let i = 0; i < curDigit.length; i++) {
+        strArr.push(curDigit[i]);
+        dfs(digits, index + 1, strArr, res);
+        strArr.pop();
+    }
+
+    return res;
+}
 
 letterCombinations("237");
