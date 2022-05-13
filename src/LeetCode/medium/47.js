@@ -87,5 +87,42 @@ var permuteUnique = function (nums) {
     return permute(0, remain, []);
 };
 
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permuteUnique = function (nums) {
+    if (!nums || nums.length == 0) return [];
 
-permuteUnique([1, 1, 3]);
+    let res = [],
+        startArr = [],
+        memo = [],
+        visited = [];
+
+    var permute = function (res, arr, memo, visited) {
+        if (arr.length == nums.length) {
+            const subArr = [...arr];
+            const tempStr = subArr.join("");
+            if (!memo.includes(tempStr)) {
+                res.push(subArr);
+                memo.push(tempStr);
+            }
+            return;
+        }
+
+        for (let i = 0; i < nums.length; i++) {
+            if (visited.includes(i)) continue;
+            arr.push(nums[i]);
+            visited.push(i);
+            permute(res, arr, memo, visited);
+            arr.pop();
+            visited.pop();
+        }
+    }
+
+    permute(res, startArr, memo, visited);
+
+    return res;
+};
+
+permuteUnique3([1, 2, 3]);
