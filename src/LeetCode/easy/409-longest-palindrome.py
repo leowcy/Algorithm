@@ -9,7 +9,7 @@ class Solution:
             mp[ch] = mp.get(ch, 0) + 1
 
         for count in mp.values():
-            if count % 2 == 0:
+            if count % 2 != 0:
                 res += count - 1
                 val = 1
             else:
