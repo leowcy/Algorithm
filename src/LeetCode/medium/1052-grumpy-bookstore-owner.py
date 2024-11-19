@@ -39,3 +39,32 @@ class Solution:
             addition_satisfied = max(addition_satisfied, curr_window_satisfied)
         
         return satisfied_without + addition_satisfied
+
+
+# Nov 18 - 2nd time meet this
+class Solution:
+    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+        n = len(customers)
+
+        # calculate the maximun not grumpy value
+        ans = 0
+        
+        for i in range(n):
+            if grumpy[i] == 0:
+                ans += customers[i]
+
+        # init for first k minutes
+        for i in range(minutes):
+            if grumpy[i] == 1:
+                ans += customers[i]
+        
+        temp = ans
+        
+        for i in range(minutes, n):
+            if grumpy[i] == 1:
+                temp += customers[i]
+            if grumpy[i-minutes] == 1:
+                temp -= customers[i-minutes]
+            ans = max(temp, ans)
+        
+        return ans
