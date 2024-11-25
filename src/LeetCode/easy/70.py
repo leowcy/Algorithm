@@ -33,9 +33,9 @@ class Solution:
         c1 = 1
         c2 = 2
 
-        for i in range(3, n+1):
+        for _ in range(3, n+1):
             new_c = c1 + c2
             c1 = c2
             c2 = new_c
         
-        return c2
+        return c1 if n == 1 else c2
