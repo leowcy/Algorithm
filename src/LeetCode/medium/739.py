@@ -77,3 +77,23 @@ class Solution:
             s.append(i)
 
         return ans 
+
+
+# Solution 5: Stack front to back
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        n = len(temperatures)
+        ans = [0] * n
+        s = []
+
+        for i in range(n):
+            cur = temperatures[i]
+
+            # Update stack
+            while s and temperatures[s[-1]] < cur:
+                j = s.pop()
+                ans[j] = i - j
+            
+            s.append(i)
+
+        return ans 
