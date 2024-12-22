@@ -23,3 +23,6 @@ class Solution:
                     queue.append((n_i, n_j, distance+1))
 
         return ans if ans > 0 else -1
+
+
+# 扫雷思路，找陆地而不是找海洋作为起始点。然后陆地附近的海洋，如果是被人访问过了，那个无需再判断是否存在最长距离，以为别人已经到过了，只能是更短的距离。
