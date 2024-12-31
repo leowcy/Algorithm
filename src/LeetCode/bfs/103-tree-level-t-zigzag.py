@@ -22,7 +22,7 @@ class Solution:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-            ans.append(values) if not even else ans.append(values[::-1])
+            ans.append(values if not even else values[::-1])
             even = not even
 
         return ans
