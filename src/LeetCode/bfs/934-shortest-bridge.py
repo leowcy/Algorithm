@@ -1,5 +1,5 @@
 class Solution:
-    def shortestBridge(self, grid: List[List[int]]) -> int:
+    def shortestBridge(self, grid: list[list[int]]) -> int:
         n = len(grid)
         first_land = deque()
         first_lands = deque()
