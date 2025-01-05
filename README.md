@@ -1,2 +1,2 @@
 # Algorithm Puzzles
-- This is a repo for Leetcode/Jianzhi Offer algorithm puzzles. 
+- This is a repo for algorithm puzzles. 
