@@ -9,7 +9,9 @@ class Solution:
         s = [0] * (n + 1)
         st = [0]
 
-        for i, val in enumerate(helper, 1):
+        for i, val in enumerate(
+            helper, 1
+        ):  # start (optional): An integer specifying the starting index for the enumeration (default is 0).
             s[i] = s[i - 1] + val
             if s[i] < s[st[-1]]:
                 st.append(i)
