@@ -30,3 +30,20 @@ class Solution:
             pre_max = max(pre_max, x) # maintain a maximum number
 
         return ans
+
+
+# Do it again
+class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        n = len(nums)
+        max_diff = max(0, nums[0] - nums[1])
+        max_value = max(nums[0], nums[1])
+        ans = 0
+
+        # loop k
+        for k in range(2, n):
+            ans = max(ans, nums[k] * max_diff)
+            max_diff = max(max_diff, max_value - nums[k])
+            max_value = max(max_value, nums[k])
+
+        return ans
