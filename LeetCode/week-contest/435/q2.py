@@ -53,3 +53,24 @@ class Solution:
                 ans = max(ans, dis)
 
         return ans
+
+
+# LingGod solution
+class Solution:
+    def maxDistance(self, s: str, k: int) -> int:
+        d = defaultdict(int)
+        ans = 0
+
+        for i, val in enumerate(s):
+            d[val] += 1
+            move = k
+
+            def helper(x, y):
+                nonlocal move
+                min_d = min(x, y, move)
+                move -= min_d
+                return abs(x - y) + 2 * min_d
+
+            ans = max(ans, helper(d["N"], d["S"]) + helper(d["E"], d["W"]))
+
+        return ans
