@@ -32,3 +32,25 @@ class Solution:
                 f[j][0] = max(f[j][0], f[j][1] + p)
                 f[j][1] = max(f[j][1], f[j - 1][0] - p)
         return f[-1][0]
+
+
+# 2nd time
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+
+        @cache
+        def dfs(x: int, k: int, hold_stock: bool) -> int:
+            if k < 0:
+                return -inf
+            if x < 0:
+                return -inf if hold_stock else 0
+
+            if hold_stock:
+                return max(
+                    dfs(x - 1, k - 1, False) - prices[x],  # buy do k-1
+                    dfs(x - 1, k, True),
+                )
+            return max(dfs(x - 1, k, True) + prices[x], dfs(x - 1, k, False))
+
+        return dfs(n - 1, 2, False)
