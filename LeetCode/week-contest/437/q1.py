@@ -11,7 +11,7 @@ class Solution:
                 cnt = 1
             
             if cnt == k:
-                if i < len(s) - 1 and s[i] == s[i+1]:
+                if i < len(s) - 1 and val == s[i+1]:
                     continue
                 else:
                     return True
