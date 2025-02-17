@@ -15,7 +15,7 @@ class Solution:
 
         for i in range(n):
             for j in range(m):
-                if grid[i][j] == 1 and row[i] > 1 and column[j] > 1:
+                if grid[i][j] == 1 and row[i] > 1 and column[j] > 1: # calculate each row and column
                     ans += (row[i] - 1) * (column[j] - 1)
 
         return ans
