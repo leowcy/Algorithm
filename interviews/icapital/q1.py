@@ -23,3 +23,27 @@ Constraints:
 1 <= s.length <= 100
 s consists only of uppercase English letters.
 """
+
+# use monotonic stack to pop element 
+def remove_str(input: str) -> int:
+    st = []
+    for i, val in enumerate(input):
+        if st and (
+            (
+                input[st[-1]] == "A"
+                and val == "B"
+            ) 
+            or (
+                input[st[-1]] == "C"
+                and val == "D"
+            )
+        ):
+            st.pop()
+        else:
+            st.append(i)
+
+    return len(st)
+
+
+print(remove_str("ABFCACDB"))
+print(remove_str("ACBBD"))
