@@ -9,7 +9,7 @@ class Solution:
         d = defaultdict(list)
         helper = [float("inf")] * (m)
 
-        for i, val in enumerate(nums):
+        for i, val in enumerate(nums): 
             if len(d[val]) > 0:
                 for j, v in enumerate(d[val]):
                     helper[i] = min(
@@ -34,6 +34,28 @@ class Solution:
 
         return ans
 
+
+class Solution_1:
+    def solveQueries(self, nums: list[int], queries: list[int]) -> list[int]:
+        d = defaultdict(list)
+        for i, x in enumerate(nums):
+            d[x].append(i)
+        
+        n = len(nums)
+        for p in d.values():
+            i0 = p[0]
+            p.insert(0, p[-1] - n)
+            p.append(i0 + n)
+        
+        for qi, i in enumerate(queries):
+            p = d[nums[i]] 
+            if len(p) == 3:
+                queries[qi] = -1
+            else:
+                j = bisect_left(p, i)
+                queries[qi] = min(i - p[j-1], p[j+1] - i)
+        
+        return queries
 
 s = Solution()
 # print(s.solveQueries([6, 12, 17, 9, 16, 7, 6], [5, 6, 0, 4]))
